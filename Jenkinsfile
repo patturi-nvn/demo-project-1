@@ -2,10 +2,10 @@
         agent any
         
         environment {
-            AWS_REGION = 'us-west-2'
-            AWS_ACCOUNT_ID = '522814702164'
+            AWS_REGION = 'us-east-1'
+            AWS_ACCOUNT_ID = '727366105259'
             APP_NAME = 'react-app'
-            GIT_REPO_URL = 'https://github.com/TamilSelvan-gig/demo-project.git'
+            GIT_REPO_URL = 'https://github.com/patturi-nvn/demo-project-1.git'
             
             // ECR repositories for different stages
             ECR_BASE = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
@@ -125,5 +125,10 @@
                     }
                 }
             }
+
+                // - TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition "$ECS_TASK_DEFINITION_NAME")
+                // - NEW_CONTAINER_DEFINITION=$(echo $TASK_DEFINITION | jq --arg IMAGE "$ECR_URL:$IMAGE_TAG" '.taskDefinition.containerDefinitions[0].image = $IMAGE | .taskDefinition.containerDefinitions[0]')
+                // - aws ecs register-task-definition --family "$ECS_TASK_DEFINITION_NAME" --container-definitions "$NEW_CONTAINER_DEFINITION"
+                // - aws ecs update-service --cluster "$ECS_CLUSTER_NAME" --service "$ECS_SERVICE_NAME" --task-definition "$ECS_TASK_DEFINITION_NAME"
         }
     }
